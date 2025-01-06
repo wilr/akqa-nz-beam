@@ -126,7 +126,7 @@ class Rsync extends Deployment implements DeploymentProvider, ResultStream
      * @return DeploymentResult
      * @throws RuntimeException
      */
-    public function up(Closure $output = null, $dryrun = false, DeploymentResult $deploymentResult = null)
+    public function up(?Closure $output = null, $dryrun = false, ?DeploymentResult $deploymentResult = null)
     {
         /** @var DeploymentResult $mergedResult */
         $mergedResult = null;
@@ -173,7 +173,7 @@ class Rsync extends Deployment implements DeploymentProvider, ResultStream
      * @return DeploymentResult
      * @throws RuntimeException
      */
-    public function down(Closure $output = null, $dryrun = false, DeploymentResult $deploymentResult = null)
+    public function down(?Closure $output = null, $dryrun = false, ?DeploymentResult $deploymentResult = null)
     {
         return $this->deploy(
             $this->buildCommand(
@@ -193,7 +193,7 @@ class Rsync extends Deployment implements DeploymentProvider, ResultStream
      * @return DeploymentResult
      * @throws RuntimeException
      */
-    public function deploy($command, Closure $output = null, $silent = false)
+    public function deploy($command, ?Closure $output = null, $silent = false)
     {
         $this->generateExcludesFile();
         $outputHandler = $this->getOutputStreamHandler($output, $silent);
@@ -621,7 +621,7 @@ class Rsync extends Deployment implements DeploymentProvider, ResultStream
      * Set a callback function to receive a stream of changes
      * @param Closure $callback function(array $array)
      */
-    public function setStreamHandler(Closure $callback = null)
+    public function setStreamHandler(?Closure $callback = null)
     {
         $this->resultStreamHandler = $callback;
     }
@@ -634,7 +634,7 @@ class Rsync extends Deployment implements DeploymentProvider, ResultStream
      * @param bool    $silent Force stream handler to capture, but not output
      * @return callable
      */
-    protected function getOutputStreamHandler(Closure $callback = null, $silent = false)
+    protected function getOutputStreamHandler(?Closure $callback = null, $silent = false)
     {
         $streamHandler = $silent ? null : $this->resultStreamHandler;
         $buffer = '';

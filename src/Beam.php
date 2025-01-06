@@ -167,7 +167,7 @@ class Beam
      * @throws Exception
      * @throws \Exception
      */
-    public function doRun(DeploymentResult $deploymentResult = null, $deploymentCallback = null)
+    public function doRun(?DeploymentResult $deploymentResult, $deploymentCallback = null)
     {
         if ($this->isUp()) {
             $this->prepareLocalPath();
@@ -565,7 +565,7 @@ class Beam
      * DeploymentProvider\ResultStream interface.
      * @throws InvalidArgumentException
      */
-    public function setResultStreamHandler(\Closure $handler = null)
+    public function setResultStreamHandler(?\Closure $handler = null)
     {
         $this->getOption('deploymentprovider')->setStreamHandler($handler);
     }
@@ -576,7 +576,7 @@ class Beam
      * @param  callable $output
      * @throws RuntimeException
      */
-    protected function runProcess(Process $process, \Closure $output = null)
+    protected function runProcess(Process $process, ?\Closure $output = null)
     {
         $process->run($output);
         if (!$process->isSuccessful()) {
@@ -804,7 +804,7 @@ class Beam
      * @throws RuntimeException
      * @return mixed
      */
-    protected function promptCommandFailureContinue($command, $exception, Process $process = null)
+    protected function promptCommandFailureContinue($command, $exception, ?Process $process = null)
     {
         if (!is_callable($this->options['commandfailurehandler'])) {
             throw $exception;

@@ -27,7 +27,7 @@ interface DeploymentProvider
      * @param DeploymentResult $deploymentResult
      * @return DeploymentResult
      */
-    public function up(Closure $output = null, $dryrun = false, DeploymentResult $deploymentResult = null);
+    public function up(?Closure $output = null, $dryrun = false, ?DeploymentResult $deploymentResult = null);
 
     /**
      * @param  Closure         $output
@@ -35,7 +35,7 @@ interface DeploymentProvider
      * @param DeploymentResult $deploymentResult
      * @return mixed
      */
-    public function down(Closure $output = null, $dryrun = false, DeploymentResult $deploymentResult = null);
+    public function down(?Closure $output = null, $dryrun = false, ?DeploymentResult $deploymentResult = null);
 
     /**
      * @return mixed

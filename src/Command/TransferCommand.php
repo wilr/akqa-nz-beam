@@ -519,7 +519,7 @@ abstract class TransferCommand extends Command
      *
      * @param InputInterface $input - if null, an input will be created using argv
      */
-    public function guessTarget(InputInterface $input = null)
+    public function guessTarget(?InputInterface $input = null)
     {
         if (!$this->transferMethod) {
             try {
