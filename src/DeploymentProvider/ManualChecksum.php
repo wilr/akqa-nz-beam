@@ -242,7 +242,7 @@ abstract class ManualChecksum extends Deployment implements DeploymentProvider
      * @throws RuntimeException
      * @return mixed
      */
-    public function down(\Closure $output = null, $dryrun = false, DeploymentResult $deploymentResult = null)
+    public function down(?\Closure $output = null, $dryrun = false, ?DeploymentResult $deploymentResult = null)
     {
         // TODO: Implement down() method.
         throw new RuntimeException('Not implemented');
