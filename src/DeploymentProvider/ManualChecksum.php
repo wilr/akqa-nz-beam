@@ -68,7 +68,7 @@ abstract class ManualChecksum extends Deployment implements DeploymentProvider
      * @return DeploymentResult
      * @throws RuntimeException
      */
-    public function up(\Closure $output = null, $dryrun = false, DeploymentResult $deploymentResult = null)
+    public function up(?\Closure $output = null, $dryrun = false, ?DeploymentResult $deploymentResult = null)
     {
         $dir = $this->beam->getLocalPath();
 
